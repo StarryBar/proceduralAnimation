@@ -34,13 +34,14 @@ namespace SA
         [SerializeField] private float moveDownRange = 0.3f;
         [SerializeField] private float touchableRange = 0.05f;
 
-        [SerializeField] public static GameObject masterObj;
+        [SerializeField] private GameObject orgMasterObj;
         [SerializeField] private GameObject character;
         [SerializeField] private GameObject goalObj;
         //[SerializeField] private float inAngleDis = 1;
 
         public IKSnapshot baseIKSnapshot;
         public FreeClimbAnimHook a_hook;
+        public static GameObject masterObj;
 
 
         Transform helper;
@@ -81,6 +82,8 @@ namespace SA
 
             a_hook.Init(this, helper);
             isClimbing = false; isWalking = true; isJumping = false;
+
+            masterObj = orgMasterObj;
         }
 
         public void CheckForClimb()
